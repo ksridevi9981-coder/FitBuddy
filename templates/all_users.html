@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy | Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo">FitBuddy</a>
+    <a href="/" class="nav-link">Create Plan</a>
+</nav>
+
+<main class="admin-container">
+
+    <section class="admin-heading">
+        <span class="eyebrow">ADMIN / COACH DASHBOARD</span>
+        <h1>Registered Users</h1>
+        <p>
+            View user information, original plans, feedback,
+            and updated workout plans.
+        </p>
+    </section>
+
+    {% if users %}
+
+        {% for user in users %}
+
+        <section class="user-card">
+
+            <div class="user-top">
+
+                <div>
+                    <span class="eyebrow">USER {{ user.user_id }}</span>
+                    <h2>{{ user.name }}</h2>
+                </div>
+
+                <span class="goal-pill">{{ user.goal }}</span>
+
+            </div>
+
+            <div class="user-info">
+
+                <div>
+                    <small>Age</small>
+                    <strong>{{ user.age }}</strong>
+                </div>
+
+                <div>
+                    <small>Weight</small>
+                    <strong>{{ user.weight }} kg</strong>
+                </div>
+
+                <div>
+                    <small>Intensity</small>
+                    <strong>{{ user.intensity }}</strong>
+                </div>
+
+                <div>
+                    <small>Created</small>
+                    <strong>{{ user.created_at }}</strong>
+                </div>
+
+            </div>
+
+            <div class="admin-section">
+                <h3>Original Workout Plan</h3>
+                <div class="plan-box small-plan">
+                    {{ user.original_plan }}
+                </div>
+            </div>
+
+            {% if user.feedback %}
+
+            <div class="admin-section">
+                <h3>User Feedback</h3>
+                <div class="feedback-box">
+                    {{ user.feedback }}
+                </div>
+            </div>
+
+            {% endif %}
+
+            {% if user.updated_plan %}
+
+            <div class="admin-section">
+                <h3>Updated Workout Plan</h3>
+                <div class="plan-box small-plan">
+                    {{ user.updated_plan }}
+                </div>
+            </div>
+
+            {% endif %}
+
+            <div class="admin-section">
+                <h3>Nutrition / Recovery Tip</h3>
+                <p class="admin-tip">{{ user.nutrition_tip }}</p>
+            </div>
+
+        </section>
+
+        {% endfor %}
+
+    {% else %}
+
+        <section class="result-card empty-state">
+            <h2>No users registered yet.</h2>
+            <p>
+                Generate a FitBuddy plan from the home page first.
+            </p>
+        </section>
+
+    {% endif %}
+
+</main>
+
+</body>
+</html>

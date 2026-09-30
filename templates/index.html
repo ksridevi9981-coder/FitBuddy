@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy | AI Fitness Plan Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo">FitBuddy</a>
+    <a href="/view-all-users" class="nav-link">Admin Dashboard</a>
+</nav>
+
+<main class="container">
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="eyebrow">AI FITNESS PLAN GENERATOR</span>
+
+            <h1>
+                Train smarter.<br>
+                <span>Live stronger.</span>
+            </h1>
+
+            <p>
+                Create a personalized 7-day fitness plan with
+                AI-powered workout and nutrition guidance.
+            </p>
+        </div>
+
+        <div class="form-card">
+
+            <div class="card-heading">
+                <span>01</span>
+                <h2>Create Your Plan</h2>
+                <p>Enter your details to generate your personalized routine.</p>
+            </div>
+
+            <form action="/generate-workout" method="post">
+
+                <div class="two-col">
+
+                    <div class="field">
+                        <label>Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>User ID</label>
+                        <input
+                            type="text"
+                            name="user_id"
+                            placeholder="e.g. FB001"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="two-col">
+
+                    <div class="field">
+                        <label>Age</label>
+                        <input
+                            type="number"
+                            name="age"
+                            min="1"
+                            max="119"
+                            placeholder="Age"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label>Weight (kg)</label>
+                        <input
+                            type="text"
+                            name="weight"
+                            placeholder="e.g. 60"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="field">
+                    <label>Fitness Goal</label>
+                    <select name="goal" required>
+                        <option value="">Select your goal</option>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="General Wellness">General Wellness</option>
+                        <option value="Flexibility">Flexibility</option>
+                        <option value="Endurance">Endurance</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Workout Intensity</label>
+                    <select name="intensity" required>
+                        <option value="">Select intensity</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <button type="submit">
+                    Generate 7-Day Plan
+                    <span>?</span>
+                </button>
+
+            </form>
+        </div>
+    </section>
+
+    <section class="feature-grid">
+
+        <div class="feature-card">
+            <span>01</span>
+            <h3>Personalized Plans</h3>
+            <p>
+                Generate a structured 7-day workout routine
+                based on your goal and intensity.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span>02</span>
+            <h3>Nutrition Guidance</h3>
+            <p>
+                Get a concise nutrition or recovery tip
+                tailored to your fitness goal.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span>03</span>
+            <h3>Adaptive Feedback</h3>
+            <p>
+                Submit feedback and let Gemini refine
+                your existing workout plan.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
